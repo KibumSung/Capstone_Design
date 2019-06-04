@@ -1,0 +1,69 @@
+syntax = "proto3";
+package vcf;
+
+option java_package = "com.rubicom.vcf.ichthus";
+option java_outer_classname="UmsgProtos";
+
+//////////////header(should be added before send)////////////////
+///////////// { type, size } ///////////////////////////////
+
+message VCF_msg
+{
+    uint32 _seqNo=1;
+    int32  _result=2;
+    string _response=3;
+    uint32 _owner=4;
+    string _name=5;
+    uint32 _c_ID=6;
+    uint32 _p_ID=7;
+    int32  _value=8;
+
+    message Extended
+    {
+        uint32 _type=1;
+        int32  _min=2;
+        int32  _max=3;
+    }
+  repeated Extended ext=9;
+}
+
+
+/*
+message Initial_msg // type==0,1,2, serv->app only
+{
+    uint32 _seqNo=1;
+    uint32 _version=2;
+    int32  _result=3;
+    string _msg=4;
+    
+    message Cmd 
+    {
+        uint32 _from=1;
+        string _name=2;
+        uint32 _varid=3;
+        int32  _value=4;
+    }
+
+    message Prm
+    {
+        uint32 _vartype=1;
+        int32  _min=2;
+        int32  _max=3;
+    }
+   
+    repeated Cmd cmd=5;
+    repeated Prm prm=6;
+    uint32 _cycle=7;
+}
+message Operational_msg // type==3 , for operational phase
+{ 
+    uint32 _seqNo=1;
+    uint32 _from=2;
+    uint32 _to=3;
+    uint32 _varID=4;
+    int32  _value=5;
+    int32  _result=6;//request=0, response=1
+    string _msg=7;
+}
+
+*/
